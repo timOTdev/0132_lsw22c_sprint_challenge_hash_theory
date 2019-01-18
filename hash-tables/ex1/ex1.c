@@ -5,10 +5,23 @@
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
-  HashTable *ht = create_hash_table(16);
+  HashTable *ht = create_hash_table(16); // built in mallocs need to be free
 
   // YOUR CODE HERE
+  Answer *match = malloc(sizeof(Answer));
 
+  for (int i = 0; i < length; i++) {
+    if (hash_table_retrieve(ht, limit-weights[i]) != -1) { // if there's a match (retrieve -> takes key, returns value)
+      match->index_1 = i;
+      match->index_2 = hash_table_retrieve(ht, limit-weights[i]);
+
+      destroy_hash_table(ht); // frees ht, capacity, and storage
+      return match;
+    }
+    hash_table_insert(ht, weights[i], i);
+  }
+
+  destroy_hash_table(ht); // frees ht, capacity, and storage
   return NULL;
 }
 
