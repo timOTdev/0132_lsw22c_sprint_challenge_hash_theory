@@ -69,7 +69,7 @@ This can be represented with boolean algebra like so:
 
 * `SUM = A ⊕ B`  (alternate: `A ^ B` or `A xor B`)
 * `CARRY = A ∧ B`  (alternate: `A && B`)
-
+l
 
 How can you represent the SUM and CARRY of adding THREE digits with a truth table and in boolean algebra?
 
@@ -77,14 +77,17 @@ How can you represent the SUM and CARRY of adding THREE digits with a truth tabl
 ```
 A     B     C      carry   sum
 --------------------------------
-0     0     0        ?      ?
-0     0     1        ?      ?
-0     1     0        ?      ?
-0     1     1        ?      ?
-1     0     0        ?      ?
-1     0     1        ?      ?
-1     1     0        ?      ?
-1     1     1        ?      ?
+0     0     0        0      0
+0     0     1        0      1
+0     1     0        0      1
+0     1     1        1      0
+1     0     0        0      1
+1     0     1        1      0
+1     1     0        1      0
+1     1     1        1      1
 ```
-* SUM = ?
-* CARRY = ?
+
+* `SUM = (A ⊕ B) ⊕ C`  (alternate: `(A xor B) xor C`)
+* `CARRY = (A ∧ B) ∧ C`  (alternate: `(A && B) && C`)
+
+<!-- https://www.electronics-tutorials.ws/combination/comb_7.html -->
